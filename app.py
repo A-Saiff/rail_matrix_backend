@@ -149,6 +149,6 @@ def raise_defect():
         return jsonify({"msg": "Error", "error": str(e)}), 500
 
 
-if __name__ == "__main__":
-    debug = os.getenv("FLASK_DEBUG", "False") == "True"
-    app.run(host="0.0.0.0", port=5000, debug=debug)
+# if __name__ == "__main__":
+#     debug = os.getenv("FLASK_DEBUG", "False") == "True"
+#     app.run(host="0.0.0.0", port=5000, debug=debug)
