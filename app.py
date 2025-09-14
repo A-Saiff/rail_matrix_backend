@@ -7,15 +7,20 @@ import bcrypt
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 import datetime
 from bson import ObjectId, Binary
+from flask_cors import CORS
+import os
+from dotenv import load_dotenv
 
 app = Flask(__name__)
-# Secret key for JWT
-app.config["JWT_SECRET_KEY"] = "SaifAnsari"
-app.config['JSON_SORT_KEYS'] = False
-jwt = JWTManager(app)
-HMAC_SECRET_KEY = b"abcd1234efgh5678"
+CORS(app)
 
-MONGO_URI = "mongodb+srv://railmatrixsih_db_user:CSiHNEUKIInSVvv2@railmatrix.kaguhoo.mongodb.net/?retryWrites=true&w=majority&appName=RailMatrix"
+load_dotenv()
+
+app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY")
+jwt = JWTManager(app)
+HMAC_SECRET_KEY = os.getenv("HMAC_SECRET_KEY").encode()
+
+MONGO_URI = os.getenv("MONGO_URI")
 client = MongoClient(MONGO_URI)
 db = client["RailMatrix_db"]
 users_collection = db["users"]
@@ -145,4 +150,5 @@ def raise_defect():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    debug = os.getenv("FLASK_DEBUG", "False") == "True"
+    app.run(host="0.0.0.0", port=5000, debug=debug)
