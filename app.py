@@ -28,6 +28,11 @@ parts_collection = db["parts"]
 defects_collection = db["defects"]
 
 
+@app.route("/")
+def home():
+    return "Hello from flask", 200
+
+
 @app.route("/login", methods=["POST"])
 def login():
     data = request.json
