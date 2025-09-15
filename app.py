@@ -82,25 +82,25 @@ def details():
                 defect = defects_collection.find_one({"_id": ObjectId(Oid)})
                 defects.append(defect.get("title"))
             answer = {
-                "uid": details['uid_payload'],
-                "item_type": details["item_type"],
-                "vendor_id": details["vendor_id"],
-                "vendor_name": details["vendor_name"],
-                "po_number": details["po_number"],
-                "lot_no": details["lot_no"],
-                "manufacture_date": details["manufacture_date"],
-                "supply_date": details["supply_date"],
-                "material": details["material"],
-                "dimensions": details["dimensions"],
-                "weight_g": details["weight_g"],
-                "surface_finish": details["surface_finish"],
-                "qc_pass": details["qc_pass"],
-                "qc_cert_no": details["qc_cert_no"],
-                "batch_quality_grade": details["batch_quality_grade"],
-                "warranty_months": details["warranty_months"],
-                "expected_life_years": details["expected_life_years"],
-                "inspection_notes": details["inspection_notes"],
-                "defects": defects
+                "UID": details['uid_payload'],
+                "Item type": details["item_type"],
+                "Vendor ID": details["vendor_id"],
+                "Vendor name": details["vendor_name"],
+                "Po number": details["po_number"],
+                "Lot number": details["lot_no"],
+                "Manufacture date": details["manufacture_date"],
+                "Supply date": details["supply_date"],
+                "Material": details["material"],
+                "Dimensions": details["dimensions"],
+                "Weight (g)": details["weight_g"],
+                "Surface finish": details["surface_finish"],
+                "QC pass": details["qc_pass"],
+                "QC certificate number": details["qc_cert_no"],
+                "Batch quality grade": details["batch_quality_grade"],
+                "Warranty (months)": details["warranty_months"],
+                "Expected life years": details["expected_life_years"],
+                "Inspection notes": details["inspection_notes"],
+                "Defects": defects
             }
             return jsonify(answer), 200
         else:
