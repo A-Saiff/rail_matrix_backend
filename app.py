@@ -78,30 +78,31 @@ def details():
 
         if details:
             defects = []
-            for Oid in details["defects"]:
+            for Oid in details.get("defects", []):
                 defect = defects_collection.find_one({"_id": ObjectId(Oid)})
                 defects.append(defect.get("title"))
             answer = {
-                "UID": details['uid_payload'],
-                "Item type": details["item_type"],
-                "Vendor ID": details["vendor_id"],
-                "Vendor name": details["vendor_name"],
-                "Po number": details["po_number"],
-                "Lot number": details["lot_no"],
-                "Manufacture date": details["manufacture_date"],
-                "Supply date": details["supply_date"],
-                "Material": details["material"],
-                "Dimensions": details["dimensions"],
-                "Weight (g)": details["weight_g"],
-                "Surface finish": details["surface_finish"],
-                "QC pass": details["qc_pass"],
-                "QC certificate number": details["qc_cert_no"],
-                "Batch quality grade": details["batch_quality_grade"],
-                "Warranty (months)": details["warranty_months"],
-                "Expected life years": details["expected_life_years"],
-                "Inspection notes": details["inspection_notes"],
+                "UID": details.get("uid_payload", "N/A"),
+                "Item type": details.get("item_type", "N/A"),
+                "Vendor ID": details.get("vendor_id", "N/A"),
+                "Vendor name": details.get("vendor_name", "N/A"),
+                "Po number": details.get("po_number", "N/A"),
+                "Lot number": details.get("lot_no", "N/A"),
+                "Manufacture date": details.get("manufacture_date", "N/A"),
+                "Supply date": details.get("supply_date", "N/A"),
+                "Material": details.get("material", "N/A"),
+                "Dimensions": details.get("dimensions", "N/A"),
+                "Weight (g)": details.get("weight_g", "N/A"),
+                "Surface finish": details.get("surface_finish", "N/A"),
+                "QC pass": details.get("qc_pass", "N/A"),
+                "QC certificate number": details.get("qc_cert_no", "N/A"),
+                "Batch quality grade": details.get("batch_quality_grade", "N/A"),
+                "Warranty (months)": details.get("warranty_months", "N/A"),
+                "Expected life years": details.get("expected_life_years", "N/A"),
+                "Inspection notes": details.get("inspection_notes", "N/A"),
                 "Defects": defects
             }
+
             return jsonify(answer), 200
         else:
             return jsonify({"error": "QR Data not available"}), 403
