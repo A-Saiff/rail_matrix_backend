@@ -100,7 +100,8 @@ def details():
                 "Warranty (months)": details.get("warranty_months", "N/A"),
                 "Expected life years": details.get("expected_life_years", "N/A"),
                 "Inspection notes": details.get("inspection_notes", "N/A"),
-                "Defects": defects
+                "Defects": defects,
+                "Batch name": details.get("batch_nane", "N/A")
             }
 
             return jsonify(answer), 200
