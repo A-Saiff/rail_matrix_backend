@@ -101,7 +101,7 @@ def details():
                 "Expected life years": details.get("expected_life_years", "N/A"),
                 "Inspection notes": details.get("inspection_notes", "N/A"),
                 "Defects": defects,
-                "Batch name": details.get("batch_nane", "N/A")
+                "Batch name": details.get("batch_name", "N/A")
             }
 
             return jsonify(answer), 200
